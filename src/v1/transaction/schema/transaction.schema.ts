@@ -17,10 +17,10 @@ export class Transaction extends Document {
     @Prop()
     createDay: string;
 
-    @Prop()
+    @Prop({ default: "location" })
     location: string;
 
-    @Prop()
+    @Prop({ default: "with me" })
     withPerson: string;
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Category" })
