@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
 
 const port = process.env.PORT || 3002;
 
@@ -12,6 +13,8 @@ async function bootstrap() {
     // methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Các phương thức HTTP cho phép
     // credentials: true, // Cho phép truy cập với credentials (cookie)
   });
+
+  app.useGlobalPipes(new ValidationPipe());
 
   // Đặt tiền tố chung cho tất cả các route
   app.setGlobalPrefix('api/v1');
